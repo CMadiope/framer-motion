@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Topping = ({ addTopping, pizza }) => {
   let toppings = [
@@ -18,21 +19,33 @@ const Topping = ({ addTopping, pizza }) => {
         {toppings.map((topping) => {
           let spanClass = pizza.toppings.includes(topping) ? "active" : "";
           return (
-            <li
+            <motion.li
               key={topping}
               onClick={() => addTopping(topping)}
               className='cursor-pointer'
+              whileHover={{
+                scale: 1.2,
+                color: "#f8e112",
+              }}
+              transition={{type:'spring', stiffness:300}}
             >
               <span className={spanClass}>{topping}</span>
-            </li>
+            </motion.li>
           );
         })}
       </ul>
 
       <Link to='/order' className='p-10'>
-        <button className='border border-white/80 rounded-xl px-10 py-4 mt-8'>
+        <motion.button
+          whileHover={{
+            scale: 1.1,
+            textShadow: "0px 0px 8px rgb(255,255,255)",
+            boxShadow: "0px 0px 8px rgb(255,255,255)",
+          }}
+          className='border border-white/80 rounded-xl px-10 py-4 mt-8'
+        >
           Order
-        </button>
+        </motion.button>
       </Link>
     </div>
   );
