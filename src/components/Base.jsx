@@ -14,6 +14,12 @@ const containerVariants = {
       type: "spring",
       delay: 0.5,
     },
+    exit: {
+      x: "-100vw",
+      transition: {
+        ease: "easeInOut",
+      },
+    },
   },
 };
 
@@ -38,6 +44,7 @@ const Base = ({ addBase, pizza }) => {
       variants={containerVariants}
       initial='initial'
       animate='animation'
+      exit='exit'
       className='container text-center text-white/70'
     >
       <h3 className='text-xl py-5'>Step 1: Choose Your Base</h3>
@@ -62,11 +69,7 @@ const Base = ({ addBase, pizza }) => {
       </ul>
 
       {pizza.base && (
-        <motion.div
-          className='py-10 '
-          variants={nextVariants}
-          
-        >
+        <motion.div className='py-10 ' variants={nextVariants}>
           <Link to='/toppings'>
             <motion.button
               whileHover={{

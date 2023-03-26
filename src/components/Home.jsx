@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { animationControls, motion } from "framer-motion";
 
 const buttonVariants = {
   hover: {
@@ -14,13 +14,33 @@ const buttonVariants = {
   },
 };
 
+const containerVariants = {
+  initial: {
+    opacity: 0,
+  },
+  animation: {
+    opacity: 1,
+    transition: {
+      delay: 1.5,
+      duration: 1.5,
+    },
+    exit: {
+      x: "-100vw",
+      transition: {
+        ease: "easeInOut",
+      },
+    },
+  },
+};
+
 const Home = () => {
   return (
     <motion.div
       className=''
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.5, duration: 1.5 }}
+      initial='initial'
+      animate='animation'
+      variants={containerVariants}
+      exit='exit'
     >
       <h2 className='text-center font-bold text-xl py-6 text-white/80'>
         Welcome to Pizza Joint

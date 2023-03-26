@@ -1,12 +1,15 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { useState } from "react";
 import Base from "./components/Base";
 import Home from "./components/Home";
 import Order from "./components/Order";
 import Topping from "./components/Topping";
 import Header from "./components/Header";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const location = useLocation();
+
   const [pizza, setPizza] = useState({ base: "", toppings: [] });
 
   const addBase = (base) => {
@@ -25,8 +28,8 @@ function App() {
   return (
     <>
       <Header />
-      <Router>
-        <Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.key}>
           <Route path='/' element={<Home />} />
           <Route
             path='/base'
@@ -38,7 +41,7 @@ function App() {
           />
           <Route path='/order' element={<Order pizza={pizza} />} />
         </Routes>
-      </Router>
+      </AnimatePresence>
     </>
   );
 }

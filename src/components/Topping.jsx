@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const containerVariants = {
   initial: {
-   x: "100vw ",
+    x: "100vw ",
     opacity: 0,
   },
   animation: {
@@ -13,6 +13,12 @@ const containerVariants = {
     transition: {
       type: "spring",
       delay: 0.5,
+    },
+    exit: {
+      x: "-100vw",
+      transition: {
+        ease: "easeInOut",
+      },
     },
   },
 };
@@ -32,6 +38,7 @@ const Topping = ({ addTopping, pizza }) => {
     variants={containerVariants}
     initial='initial'
     animate='animation'
+    exit='exit'
     >
       <h3 className='text-xl py-4'>Step 2: Choose Toppings</h3>
       <ul className='flex flex-col gap-3'>
