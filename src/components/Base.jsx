@@ -6,7 +6,12 @@ const Base = ({ addBase, pizza }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
   return (
-    <div className='container text-center text-white/70'>
+    <motion.div
+    initial={{x:'100vw'}}
+    animate={{x:0}}
+    transition={{type:'spring', delay:0.5}}
+
+    className='container text-center text-white/70'>
       <h3 className='text-xl py-5'>Step 1: Choose Your Base</h3>
       <ul className='flex flex-col gap-3'>
         {bases.map((base) => {
@@ -24,9 +29,11 @@ const Base = ({ addBase, pizza }) => {
       </ul>
 
       {pizza.base && (
-        <motion.div className='py-10 '
-        initial={{x:'-100vw'}}
-        animate={{x:0}}
+        <motion.div
+          className='py-10 '
+          initial={{ x: "-100vw" }}
+          animate={{ x: 0 }}
+          transition={{ type: "spring", stiffness: 120 }}
         >
           <Link to='/toppings'>
             <button className='border border-white/80 rounded-xl px-10 py-4'>
@@ -35,7 +42,7 @@ const Base = ({ addBase, pizza }) => {
           </Link>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

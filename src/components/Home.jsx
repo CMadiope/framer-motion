@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <motion.div className='' initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+    <motion.div
+      className=''
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{delay:1.5, duration:1.5}}
+    >
       <h2 className='text-center font-bold text-xl py-6 text-white/80'>
         Welcome to Pizza Joint
       </h2>

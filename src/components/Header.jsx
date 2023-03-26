@@ -7,6 +7,7 @@ const Header = () => {
       <motion.div className='font-bold text-2xl p-8 text-white'
       initial={{y:-250}}
       animate={{y:-10}}
+      transition={{delay:0.2, type:'spring', stiffness:120}}
       >
         Pizza Joint
       </motion.div>
