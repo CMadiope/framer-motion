@@ -1,11 +1,15 @@
 import React from 'react'
+import { motion } from 'framer-motion';
 
 const Header = () => {
   return (
     <header>
-      <div className='font-bold text-2xl p-8'>
+      <motion.div className='font-bold text-2xl p-8 text-white'
+      initial={{y:-250}}
+      animate={{y:-10}}
+      >
         Pizza Joint
-      </div>
+      </motion.div>
     </header>
   );
 }
