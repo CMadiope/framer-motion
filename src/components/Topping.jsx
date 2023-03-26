@@ -2,6 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+  initial: {
+   x: "100vw ",
+    opacity: 0,
+  },
+  animation: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      delay: 0.5,
+    },
+  },
+};
+
 const Topping = ({ addTopping, pizza }) => {
   let toppings = [
     "mushrooms",
@@ -13,7 +28,11 @@ const Topping = ({ addTopping, pizza }) => {
   ];
 
   return (
-    <div className='container text-center text-white/80'>
+    <motion.div className='container text-center text-white/80'
+    variants={containerVariants}
+    initial='initial'
+    animate='animation'
+    >
       <h3 className='text-xl py-4'>Step 2: Choose Toppings</h3>
       <ul className='flex flex-col gap-3'>
         {toppings.map((topping) => {
@@ -47,7 +66,7 @@ const Topping = ({ addTopping, pizza }) => {
           Order
         </motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 

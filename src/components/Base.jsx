@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const containerVariants = {
   initial: {
-    x: 0,
+    x: "100vw ",
     opacity: 0,
   },
   animation: {
