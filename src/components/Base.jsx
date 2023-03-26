@@ -2,14 +2,42 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+const containerVariants = {
+  initial: {
+    x: 0,
+    opacity: 0,
+  },
+  animation: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      delay: 0.5,
+    },
+  },
+};
+
+const nextVariants = {
+  initial: {
+    x: "-100vw",
+  },
+  animation: {
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 120,
+    },
+  },
+};
+
 const Base = ({ addBase, pizza }) => {
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
 
   return (
     <motion.div
-      initial={{ x: "100vw" }}
-      animate={{ x: 0 }}
-      transition={{ type: "spring", delay: 0.5 }}
+      variants={containerVariants}
+      initial='initial'
+      animate='animation'
       className='container text-center text-white/70'
     >
       <h3 className='text-xl py-5'>Step 1: Choose Your Base</h3>
@@ -36,9 +64,8 @@ const Base = ({ addBase, pizza }) => {
       {pizza.base && (
         <motion.div
           className='py-10 '
-          initial={{ x: "-100vw" }}
-          animate={{ x: 0 }}
-          transition={{ type: "spring", stiffness: 120 }}
+          variants={nextVariants}
+          
         >
           <Link to='/toppings'>
             <motion.button
